@@ -24,3 +24,5 @@ while True:
                 print(f'O Jogador 2 {jogador2} GANHOUU!!!')
                 break
     break
+
+
