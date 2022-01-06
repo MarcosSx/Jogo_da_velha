@@ -24,9 +24,3 @@ while True:
                 print(f'O Jogador 2 {jogador2} GANHOUU!!!')
                 break
     break
-
-# jogo[1][0] = 'O'
-# jogo[1][1] = 'O'
-# jogo[1][2] = 'O'
-# atualiza_jogo(jogo)
-# jogador_ganhou(jogo, 'O')

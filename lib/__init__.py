@@ -39,14 +39,42 @@ def preencher_posicao(pos, game, jogador):
 
 
 def jogador_ganhou(game, jogador):
+    # Verifica se a horizontal está igual
     for l in range(0, 3):
-        cont = 0
+        cont_v = 0
         for c in range(0, 3):
             if game[l][c] == jogador:
-                cont += 1
-            if cont == 3:
+                cont_v += 1
+            if cont_v == 3:
                 return True
 
-        # print(cont)
-    # return True
+    # Verifica se a diagonal principal esta igual
+    c = cont_d1 = 0
+    for l in range(0, 3):
+        if game[l][c] == jogador:
+            cont_d1 += 1
+            if cont_d1 == 3:
+                return True
+        c += 1
+
+    # Verifica se a diagonal secundaria esta igual
+    c = 2
+    cont_d2 = 0
+    for l in range(0, 3):
+        if game[l][c] == jogador:
+            cont_d2 += 1
+            if cont_d2 == 3:
+                return True
+        c -= 1
+
+    # Verifica se a vertical esta igual
+    for j in range(0, 3):
+        l = cont_h = 0
+        for c in range(0, 3):
+            if game[l][c] == jogador:
+                cont_h += 1
+            if cont_h == 3:
+                print('GANHOU')
+                return True
+            l += 1
 
