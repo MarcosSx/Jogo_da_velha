@@ -2,6 +2,15 @@ def cria_novo_jogo():
     return [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']]
 
 
+def escolhe_jogador(msg, jogador2='x'):
+    while True:
+        jogador = str(input(msg)).upper().strip()[0]
+        if jogador.isalpha() and jogador not in jogador2:
+            break
+        print('Escolha outro caractere valido!')
+    return jogador
+
+
 def atualiza_jogo(game):
     print()
     for lin in range(0, 3):
@@ -17,25 +26,24 @@ def preencher_posicao(pos, game, jogador):
         print(f'Indice {pos} fora de alcance')
         pos = int(input('Digite uma posição valida: '))
         print()
-    else:
-        ok = False
-        cont = 0
-        print(f'O jogador {jogador} jogou na posição {pos}')
-        while True:
-            if ok:
-                break
-            for l in range(0, 3):
-                try:
-                    c = game[l].index(str(pos))
-                    game[l][c] = jogador
-                    ok = True
-                except:
-                    cont += 1
-                    if cont == 3:
-                        pos = int(input('\033[31mPosição ja preencida\033[m\n\033[33mEscolha outra posição: \033[m'))
-                        print(f'O jogador {jogador} jogou na posição {pos}')
-                        cont = 0
-                        break
+    ok = False
+    cont = 0
+    print(f'O jogador {jogador} jogou na posição {pos}')
+    while True:
+        if ok:
+            break
+        for l in range(0, 3):
+            try:
+                c = game[l].index(str(pos))
+                game[l][c] = jogador
+                ok = True
+            except:
+                cont += 1
+                if cont == 3:
+                    pos = int(input('\033[31mPosição ja preencida\033[m\n\033[33mEscolha outra posição: \033[m'))
+                    print(f'O jogador {jogador} jogou na posição {pos}')
+                    cont = 0
+                    break
 
 
 def jogador_ganhou(game, jogador):

@@ -3,8 +3,10 @@ from lib import *
 jogo = cria_novo_jogo()
 
 print('BEM VINDO À VELHA')
-jogador1 = str(input('Escolha um caractere para te representar\nJOGADOR 1: ')).upper().strip()[0]
-jogador2 = str(input('Escolha um caractere para te representar\nJOGADOR 2: ')).upper().strip()[0]
+print('Escolha um caractere para te representar:')
+jogador1 = escolhe_jogador('JOGADOR 1: ')
+jogador2 = escolhe_jogador('JOGADOR 2: ', jogador1)
+
 print('Escolha um dos indices numerados')
 atualiza_jogo(jogo)
 while True:
