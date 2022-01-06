@@ -7,12 +7,12 @@ def escolhe_jogador(msg, jogador2='x'):
         jogador = str(input(msg)).upper().strip()[0]
         if jogador.isalpha() and jogador not in jogador2:
             break
-        print('Escolha outro caractere valido!')
+        cabeçalho('Escolha outro caractere valido!')
     return jogador
 
 
 def atualiza_jogo(game):
-    print()
+    # print()
     for lin in range(0, 3):
         for col in range(0, 3):
             print(f' {game[lin][col]} ', end='')
@@ -23,12 +23,12 @@ def atualiza_jogo(game):
 
 def preencher_posicao(pos, game, jogador):
     while pos > 9 or pos <= 0:
-        print(f'Indice {pos} fora de alcance')
+        cabeçalho(f'Indice {pos} fora de alcance')
         pos = int(input('Digite uma posição valida: '))
         print()
     ok = False
     cont = 0
-    print(f'O jogador {jogador} jogou na posição {pos}')
+    cabeçalho(f'O jogador {jogador} jogou na posição {pos}')
     while True:
         if ok:
             break
@@ -41,7 +41,7 @@ def preencher_posicao(pos, game, jogador):
                 cont += 1
                 if cont == 3:
                     pos = int(input('\033[31mPosição ja preencida\033[m\n\033[33mEscolha outra posição: \033[m'))
-                    print(f'O jogador {jogador} jogou na posição {pos}')
+                    cabeçalho(f'O jogador {jogador} jogou na posição {pos}')
                     cont = 0
                     break
 
@@ -83,3 +83,13 @@ def jogador_ganhou(game, jogador):
                 cont_v += 1
             if cont_v == 3:
                 return True
+
+
+def linha(tam=42):
+   return '-' * tam
+
+
+def cabeçalho(txt):
+    print(linha())
+    print(txt.center(42))
+    print(linha())
