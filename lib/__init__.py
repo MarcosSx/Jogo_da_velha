@@ -36,7 +36,7 @@ def atualiza_jogo(game):
             print(f' {c[9] + game[lin][col] + c[0]} ', end='')
             print(f'{c[8]}|' if col != 2 else '', end='')
         print()
-        print(f'{c[8]}¨' * 11 if lin != 2 else f'{c[0]}')
+        print(f'{c[8]}-' * 11 if lin != 2 else f'{c[0]}')
 
 
 def preencher_posicao(pos, game, jogador):
