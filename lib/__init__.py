@@ -10,7 +10,7 @@ c = (
     '\033[0;35m',   # Magenta
     '\033[0;36m',   # Ciano
     '\033[1;96m',   # Ciano claro
-    '\033[1;95m', # Pink
+    '\033[1;95m',   # Pink
     '\033[;7m'      # Inverte
     )
 
