@@ -15,14 +15,14 @@ while True:
                 preencher_posicao(pos, jogo, jogador1)
                 atualiza_jogo(jogo)
                 if jogador_ganhou(jogo, jogador1):
-                    cabeçalho(f'O Jogador 1 {jogador1} GANHOUU!!!')
+                    cabeçalho(f'\033[32mO Jogador 1 {jogador1} GANHOUU!!!\033[m')
                     break
             else:
                 pos = int(input('Digite uma posição: '))
                 preencher_posicao(pos, jogo, jogador2)
                 atualiza_jogo(jogo)
                 if jogador_ganhou(jogo, jogador2):
-                    cabeçalho(f'O Jogador 2 {jogador2} GANHOUU!!!')
+                    cabeçalho(f'\033[32mO Jogador 2 {jogador2} GANHOUU!!!\033[m')
                     break
         break
     while True:

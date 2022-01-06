@@ -15,16 +15,16 @@ def atualiza_jogo(game):
     # print()
     for lin in range(0, 3):
         for col in range(0, 3):
-            print(f' {game[lin][col]} ', end='')
+            print(f'\033[1;95m {game[lin][col]} ', end='')
             print('|' if col != 2 else '', end='')
         print()
-        print('¨' * 11 if lin != 2 else '')
+        print('¨' * 11 if lin != 2 else '\033[m')
 
 
 def preencher_posicao(pos, game, jogador):
     while pos > 9 or pos <= 0:
         cabeçalho(f'Indice {pos} fora de alcance')
-        pos = int(input('Digite uma posição valida: '))
+        pos = leiaInt('Digite uma posição valida: ')
         print()
     ok = False
     cont = 0
@@ -40,7 +40,7 @@ def preencher_posicao(pos, game, jogador):
             except:
                 cont += 1
                 if cont == 3:
-                    pos = int(input('\033[31mPosição ja preencida\033[m\n\033[33mEscolha outra posição: \033[m'))
+                    pos = leiaInt('\033[31mPosição ja preencida\033[m\n\033[33mEscolha outra posição: \033[m')
                     cabeçalho(f'O jogador {jogador} jogou na posição {pos}')
                     cont = 0
                     break
@@ -93,3 +93,18 @@ def cabeçalho(txt):
     print(linha())
     print(txt.center(42))
     print(linha())
+
+
+def leiaInt(msg):
+    ok = False
+    valor = 0
+    while True:
+        n = str(input(msg))
+        if n.isnumeric():
+            valor = int(n)
+            ok = True
+        else:
+            print('\033[0;31mERRO! Digite um número inteiro válido.\033[m')
+        if ok:
+            break
+    return valor
