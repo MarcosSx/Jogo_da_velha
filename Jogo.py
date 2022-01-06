@@ -31,5 +31,3 @@ while True:
             break
     if resp in 'N':
         break
-
-
