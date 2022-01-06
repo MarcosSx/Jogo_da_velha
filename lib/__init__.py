@@ -1,17 +1,17 @@
 from random import randint
 
 c = (
-    '\033[m',       # Limpa
-    '\033[0;30m',   # Preto
-    '\033[0;31m',   # Vermelho
-    '\033[0;32m',   # Verde
-    '\033[0;33m',   # Amarelo
-    '\033[0;34m',   # Azul
-    '\033[0;35m',   # Magenta
-    '\033[0;36m',   # Ciano
-    '\033[1;96m',   # Ciano claro
-    '\033[1;95m',   # Pink
-    '\033[;7m'      # Inverte
+    '\033[m',       # 0Limpa
+    '\033[0;30m',   # 1Preto
+    '\033[0;31m',   # 2Vermelho
+    '\033[0;32m',   # 3Verde
+    '\033[0;33m',   # 4Amarelo
+    '\033[0;34m',   # 5Azul
+    '\033[0;35m',   # 6Magenta
+    '\033[0;36m',   # 7Ciano
+    '\033[1;96m',   # 8Ciano claro
+    '\033[1;95m',   # 9Pink
+    '\033[;7m'      # 10Inverte
     )
 
 
@@ -24,7 +24,7 @@ def escolhe_jogador(msg, jogador2='x'):
         jogador = str(input(c[3] + msg + c[0])).upper().strip()[0]
         if jogador.isalpha() and jogador not in jogador2:
             break
-        cabeçalho('Escolha outro caractere valido!')
+        cabeçalho('Escolha outro caractere valido!', 2)
     cor = randint(1, 6)
     return c[cor] + jogador + c[0]
 
@@ -42,7 +42,7 @@ def atualiza_jogo(game):
 def preencher_posicao(pos, game, jogador):
     while pos > 9 or pos <= 0:
         cabeçalho(f'Indice {pos} fora de alcance')
-        pos = leiaInt('Digite uma posição valida: ')
+        pos = leiaInt('Digite uma posição valida: ', 4)
         print()
     ok = False
     cont = 0
@@ -59,7 +59,7 @@ def preencher_posicao(pos, game, jogador):
                 cont += 1
                 if cont == 3:
                     pos = leiaInt('Posição ja preencida\nEscolha outra posição: ', 2)
-                    cabeçalho(f'O jogador {jogador} jogou na posição {pos}')
+                    cabeçalho(f'{c[4]}O jogador {c[0]}{jogador}{c[4]} jogou na posição {pos}{c[0]}')
                     cont = 0
                     break
 
