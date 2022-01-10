@@ -15,22 +15,32 @@ c = (
     )
 
 
-def cria_novo_jogo():
+def cria_novo_jogo(inicio=False):
+    if inicio:
+        cabeçalho('BEM VINDO À VELHA', cor=5)
+        cabeçalho('Escolha um caractere para te representar:', cor=8)
     return [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']]
 
 
-def escolhe_jogador(msg, jogador2='x'):
-    while True:
-        jogador = str(input(c[3] + msg + c[0])).upper().strip()[0]
-        if jogador.isalpha() and jogador not in jogador2:
-            break
-        cabeçalho('Escolha outro caractere valido!', 2)
+def escolhe_jogador(msg, jogador2='x', bot=False):
+    if bot:
+        jogador = 'X'
+        if jogador in jogador2:
+            jogador = 'O'
+        print(str(c[3] + msg + jogador + c[0]))
+    else:
+        while True:
+            jogador = str(input(c[3] + msg + c[0])).upper().strip()[0]
+            if jogador.isalpha() and jogador not in jogador2:
+                break
+            cabeçalho('Escolha outro caractere valido!', 2)
     cor = randint(1, 6)
     return c[cor] + jogador + c[0]
 
 
+
 def atualiza_jogo(game):
-    # print()
+    cabeçalho('Escolha um dos indices numerados', cor=8)
     for lin in range(0, 3):
         for col in range(0, 3):
             print(f' {c[9] + game[lin][col] + c[0]} ', end='')
@@ -39,8 +49,11 @@ def atualiza_jogo(game):
         print(f'{c[8]}-' * 11 if lin != 2 else f'{c[0]}')
 
 
-def preencher_posicao(pos, game, jogador):
+def preencher_posicao(pos, game, jogador, bot=False):
     while pos > 9 or pos <= 0:
+        if bot:
+            pos = randint(1, 9)
+            break
         cabeçalho(f'Indice {pos} fora de alcance')
         pos = leiaInt('Digite uma posição valida: ', 4)
         print()
@@ -58,8 +71,11 @@ def preencher_posicao(pos, game, jogador):
             except:
                 cont += 1
                 if cont == 3:
-                    pos = leiaInt('Posição ja preencida\nEscolha outra posição: ', 2)
-                    cabeçalho(f'{c[4]}O jogador {c[0]}{jogador}{c[4]} jogou na posição {pos}{c[0]}')
+                    if bot:
+                        pos = randint(1, 9)
+                    else:
+                        pos = leiaInt('Posição ja preencida\nEscolha outra posição: ', 2)
+                        cabeçalho(f'{c[4]}O jogador {c[0]}{jogador}{c[4]} jogou na posição {pos}{c[0]}')
                     cont = 0
                     break
 
@@ -126,3 +142,4 @@ def leiaInt(msg, cor=8):
         if ok:
             break
     return valor
+
