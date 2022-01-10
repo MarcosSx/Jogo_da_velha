@@ -29,7 +29,7 @@ while True:
             if jogador_ganhou(jogo, jogador2):
                 cabeçalho(f'O Jogador 2 {jogador2} GANHOUU!!!', cor=3)
                 break
-    if cont == 9 and not jogador_ganhou(jogo, jogador1) or jogador_ganhou(jogo, jogador2):
+    if cont == 9 and not jogador_ganhou(jogo, jogador1) or not jogador_ganhou(jogo, jogador2):
         cabeçalho('DEU VELHA', cor=9)
     while True:
         resp = str(input('Deseja jogar mais uma? [S/N]: ')).upper().strip()[0]
